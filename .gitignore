@@ -1,0 +1,21 @@
+node_modules/
+
+# Your server's own data. Never in the repository.
+config.json
+config.json.bak
+secrets.json
+chat-commands.json
+server-facts.md
+mod-facts.md
+persona.md
+quotes.json
+
+# Not published: the test suite and the two tools that need it. They live in
+# the working folder, they do not go to the repository - decided 20.09.2026.
+test/
+tools/ftp-probe.js
+tools/ftp-test-server.js
+tools/release.js
+
+# Names that must not appear in published files. Never committed.
+.private-words

@@ -1,0 +1,19 @@
+{
+  "name": "avorion-discord-crosschat",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Avorion Crosschat - two-way chat bridge between an Avorion server and a Discord channel",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "basic-ftp": "^6.2.1",
+    "discord.js": "^14.27.0",
+    "ws": "^8.21.3"
+  }
+}

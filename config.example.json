@@ -1,0 +1,83 @@
+{
+  "_comment": "Copy to config.json and fill in. See SETUP.md. Never share config.json: whoever has it controls your server.",
+  "mode": "panel",
+  "pelicanUrl": "FILL IN (panel mode): your panel address, e.g. https://panel.example.com",
+  "pelicanApiKey": "FILL IN (panel mode): account API key from the panel, not the application key",
+  "serverId": "FILL IN (panel mode): server id from the panel URL after /server/",
+  "local": {
+    "galaxyPath": "FILL IN (local mode): folder with the galaxy and its logs",
+    "logDir": "",
+    "commandsFile": "commands.txt",
+    "pollMs": 500
+  },
+  "ftp": {
+    "host": "FILL IN (ftp mode): your hoster's ftp address",
+    "port": 21,
+    "user": "FILL IN (ftp mode)",
+    "password": "FILL IN (ftp mode)",
+    "secure": false,
+    "dir": "FILL IN (ftp mode): the folder that holds the galaxy and its logs",
+    "commandsFile": "commands.txt",
+    "pollSeconds": 5
+  },
+  "discordToken": "FILL IN: bot token from the Discord developer portal",
+  "discordChannelId": "FILL IN: id of the Discord chat channel",
+  "commands": {
+    "filePath": "/galaxy/Avorion/commands.txt",
+    "pollMs": 500,
+    "linesPerWrite": 1,
+    "maxQueue": 50,
+    "timeoutMs": 20000,
+    "requestTimeoutMs": 15000
+  },
+  "console": {
+    "idleMinutes": 15,
+    "requestSeconds": 15,
+    "querySeconds": 8
+  },
+  "discord": {
+    "skipCoordinatePings": true
+  },
+  "admin": {
+    "enabled": true,
+    "discordUserIds": [],
+    "rebootSeconds": 60,
+    "confirmSeconds": 30,
+    "sayName": "Server",
+    "channelId": "",
+    "noticesToAdminChannel": true
+  },
+  "chatCommands": {
+    "enabled": true,
+    "file": "chat-commands.json",
+    "cooldownSeconds": 10,
+    "globalCooldownSeconds": 3,
+    "critChance": 0.05,
+    "fromDiscord": true
+  },
+  "quotes": {
+    "enabled": true,
+    "file": "quotes.json"
+  },
+  "ai": {
+    "enabled": false,
+    "botName": "Companion",
+    "baseUrl": "https://api.deepseek.com",
+    "apiKey": "FILL IN if enabled: API key of your model provider",
+    "model": "deepseek-flash",
+    "maxRepliesPerHour": 180,
+    "cooldownSeconds": 10,
+    "maxReplyChars": 200,
+    "maxHelpChars": 400,
+    "modFactsFile": "mod-facts.md",
+    "personaFile": "persona.md",
+    "historyLines": 15,
+    "persona": "Dry, deadpan, faintly superior. Sarcastic but never cruel: mock the situation, never the person. Short sentences.",
+    "cakeJoke": false
+  },
+  "welcome": {
+    "enabled": false,
+    "delayMs": 10000,
+    "text": "Welcome to the server, {user}. Type !commands for the list."
+  }
+}
