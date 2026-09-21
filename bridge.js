@@ -17,7 +17,7 @@ const { createAdminCommands } = require('./lib/admin');
 const { createWatchdog } = require('./lib/watchdog');
 const { createWelcome } = require('./lib/welcome');
 const { createPresence, formatOnline } = require('./lib/presence');
-const { createQuery, onlineCommand, parseOnline } = require('./lib/query');
+const { createQuery, onlineCommand, parseOnline, bossCommand, parseBoss, formatBoss } = require('./lib/query');
 const { createQuotes } = require('./lib/quotes');
 const { routeDiscordMessage } = require('./lib/route');
 const { trimStrings, mergeSecrets, strayKeys, textFromFile } = require('./lib/config');
@@ -282,8 +282,8 @@ if (!config.chatCommands || config.chatCommands.enabled !== false) {
   chatCommands = createChatCommands({
     config: { ...cc, botName: cmdName },
     // !ai belongs to the chat companion, but players should find it in the list
-    extraCommands: [...(ai ? ['!ai', '!help'] : []), ...(quotes ? ['!quote'] : []), '!online'],
-    // !quote and !online run through the same cooldowns as everything else.
+    extraCommands: [...(ai ? ['!ai', '!help'] : []), ...(quotes ? ['!quote'] : []), '!online', '!boss'],
+    // !quote, !online and !boss run through the same cooldowns as everything else.
     handlers: [
       ...(quotes ? [{
         commands: ['!quote', '!addquote'],
@@ -302,6 +302,12 @@ if (!config.chatCommands || config.chatCommands.enabled !== false) {
           if (names === null) return formatOnline(presence.names());
           return names.length ? `Online (${names.length}): ${names.join(', ')}` : 'Nobody online.';
         }),
+      },
+      // Is a Behemoth or Leviathan out, and where. Read from the galaxy's own
+      // event script, so it is right after a restart too.
+      {
+        commands: ['!boss'],
+        run: () => query.ask(bossCommand).then((answer) => formatBoss(parseBoss(answer))),
       },
     ],
     sendChat: (text) => bridge.send(cmdName, text, { raw: true }),
