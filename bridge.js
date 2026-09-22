@@ -282,8 +282,8 @@ if (!config.chatCommands || config.chatCommands.enabled !== false) {
   chatCommands = createChatCommands({
     config: { ...cc, botName: cmdName },
     // !ai belongs to the chat companion, but players should find it in the list
-    extraCommands: [...(ai ? ['!ai', '!help'] : []), ...(quotes ? ['!quote'] : []), '!online', '!boss'],
-    // !quote, !online and !boss run through the same cooldowns as everything else.
+    extraCommands: [...(ai ? ['!ai', '!help'] : []), ...(quotes ? ['!quote'] : []), '!online', '!leviathan'],
+    // !quote, !online and !leviathan run through the same cooldowns as everything else.
     handlers: [
       ...(quotes ? [{
         commands: ['!quote', '!addquote'],
@@ -306,12 +306,13 @@ if (!config.chatCommands || config.chatCommands.enabled !== false) {
       // Is a Behemoth or Leviathan out, and where. Read from the galaxy's own
       // event script, so it is right after a restart too.
       {
-        commands: ['!boss'],
+        // !boss is the old name and still answers, it is just not listed
+        commands: ['!leviathan', '!boss'],
         run: () => query.ask(bossCommand).then((answer) => {
           const state = parseBoss(answer);
           // a boss is out but its sector could not be read: keep what came
           // back, it is the only way to learn what shape it has
-          if (state && state.out && !state.sector) log(`!boss: sector not readable, raw answer: ${answer}`);
+          if (state && state.out && !state.sector) log(`!leviathan: sector not readable, raw answer: ${answer}`);
           return formatBoss(state);
         }),
       },
