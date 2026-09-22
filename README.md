@@ -93,7 +93,7 @@ Text only, in the game chat and — unless you switch that off — from Discord.
     !slap <name>     0-100 % damage, 5 % chance of a critical hit
     !duel <name>     two rolls, higher one wins
     !online          who is on the server right now, asked of the game
-    !boss            whether a Behemoth or Leviathan is out, and where
+    !boss            whether a Behemoth or Leviathan attack is on, and where
     !8ball <question>
     !quote           see below
     !commands        lists everything that exists right now
